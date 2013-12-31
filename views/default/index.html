@@ -1,12 +1,32 @@
 {{extend 'layout.html'}}
-<table>
+<table class="equidistant">
     <tr>
-        <td id="basic" valign=top>{{=response.basic or ''}}</td>
-        <td id="detail" valign=top>{{=response.detail or ''}}</td>
+        <td valign="top">
+        	<fieldset id="basic">
+        		<legend>Basic</legend>
+        		{{=response.basic or ''}}
+        	</fieldset>
+        </td>
+        <td valign="top">
+        	<fieldset id="options">
+        		<legend>Options</legend>
+
+        	</fieldset>
+        </td>
+        <td valign="top">
+        	<fieldset id="detail">
+        		<legend>Detail</legend>
+        		{{=response.detail or ''}}
+        	</fieldset>
+        </td>
     </tr>
     <tr>
-        <td id="advanced" colspan=2 valign=top">Advanced</td>
+        <td colspan="3" valign="top">
+        	<fieldset id="advanced">
+        		<legend>Advanced</legend>
+        	</fieldset>
+        </td>
     </tr>
 </table>
-<div id=dialogs>
+<div id="dialogs">
 </div>

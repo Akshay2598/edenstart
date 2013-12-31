@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+
+<!--
+Made by Akshay Kalose for Google Code-In 2013
+-->
+
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Sahana Eden</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+        <!-- Default Stylesheets -->
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- Sidr Stylesheet -->
+        <link rel="stylesheet" href="sidr/jquery.sidr.dark.css">
+
+        <!-- Link to the theme's stylesheet -->
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <div class="navbar">
+            <ul>
+                <li><a href="index.html"><img src="img/logo.png"></a></li>
+                <li><a href="hospitals.html">Hospitals</a></li>
+                <li>
+                    <a href="#">People</a>
+                    <ul>
+                        <li><a href="newperson.html">New</a></li>
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">Map</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">Help/Resources</a></li>
+                <span class="right">
+                    <li><a href="#">Settings</a></li>
+                    <li><a href="#">Log in</a></li>
+                </span>
+            </ul>
+        </div>
+        <div class="container container-withsidebar">
+            <h1 id="title">Add New Person</h1>
+            <div id="content">
+                <form>
+                    <div class="col2">
+                        <fieldset>
+                            <legend>Person Record</legend>
+                            <table>
+                                <tr>
+                                    <td>
+                                        <label>First Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                       <label>Family Name:</label>
+                                    </td>
+                                    <td>
+                                        <input type="text">
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <div class="col2">
+                        <fieldset>
+                            <legend>Images</legend>
+                            <table>
+                                <tr>
+                                    <td>
+                                       <label>Image:</label>
+                                    </td>
+                                    <td>
+                                        <img width="100" height="100">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Upload:</label>
+                                    </td>
+                                    <td>
+                                        <input type="file" name="pic" accept="image/*">
+                                    </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <div class="col2">
+                        <fieldset>
+                            <legend>Public Information</legend>
+                            <table>
+                                <tr>
+                                     <td>
+                                        <label>Age:</label>
+                                     </td>
+                                     <td>
+                                        <input type="number">
+                                     </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                        <label>Gender:</label>
+                                     </td>
+                                     <td>
+                                        <select>
+                                            <option>Male</option>
+                                            <option>Female</option>
+                                            <option>Complex</option>
+                                        </select>
+                                     </td>
+                                </tr>
+                                <tr>
+                                     <td>
+                                        <label>Hair Color:</label>
+                                     </td>
+                                     <td>
+                                        <select>
+                                            <option>Black</option>
+                                            <option>Brown</option>
+                                            <option>Grey</option>
+                                            <option>Blond</option>
+                                            <option>Dirty Blond</option>
+                                        </select>
+                                     </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <div class="col2">
+                        <fieldset>
+                            <legend>Notes</legend>
+                            <table>
+                                <tr>
+                                     <td>
+                                        <textarea rows="4" cols="75"></textarea>
+                                     </td>
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </div>
+                    <button type="submit" class="button button-med submit">Create</button>
+                </form>
+            </div>
+        </div>
+        <a id="open-sidebar" href="#sidr"></a>
+        <div id="sidr">
+            <ul>
+                <li>
+                    <a href="#">Person</a>
+                    <ul>
+                        <li><a href="newperson.html">Add Person</a></li>
+                        <li><a href="#">Search</a></li>
+                        <li><a href="#">List All</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Groups</a>
+                    <ul>
+                        <li><a href="#">New</a></li>
+                        <li><a href="#">List All</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+
+        <script src="http//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.2.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+        <script src="sidr/jquery.sidr.min.js"></script>
+        
+        <script>
+        $(document).ready(function() {
+            $("[href]").each(function() {
+                if (this.href == window.location.href) {
+                    $(this).addClass("active");
+                }
+            });
+            $('#open-sidebar').sidr();
+        });
+        </script>
+    </body>
+</html>

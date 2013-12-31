@@ -93,7 +93,7 @@ def index():
     actions["base"] = T("Basic system settings")
     actions["template"] = T("Select the template to use")
     actions["modules"] = T("Select modules to enable")
-    table = TABLE()
+    table = TABLE(_class="information")
     for (key,value) in actions.items():
         table.append(TR(
                         TD(value, _id="%s" % key),

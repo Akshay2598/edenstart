@@ -1,11 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
  <head>
   <title>
    {{=response.title or request.application}}
   </title>
-  {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/TinyBlue/styles.css'))}}
-  {{response.files.append(URL(request.application,'static','css/edenstart.css'))}}
+  {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/Akshay/css/normalize.css'))}}
+  {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/Akshay/css/main.css'))}}
+  {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/Akshay/css/style.css'))}}
   {{include 'web2py_ajax.html'}}
   <style>
 ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}
@@ -23,22 +24,24 @@ div.error { background-color: red; color: white; padding: 3px; }
       {{try:}}{{=auth.navbar(action=URL('default','user'))}}{{except:pass}}
       -->
 
-  <div id="container">
-   <div id="border">
-    <div id="header">
-     <h1>
-      <table><tr>
-         <td><img src="{{=URL(request.application,'static','images/sahana_large.png')}}"></td> 
-         <td style="vertical-align: middle">{{=response.title or request.application}}</td>
-      </tr></table>
+  <div class="navbar">
+    <ul>
+      <li><a href="/edenstart"><img src="{{=URL(request.application,'static','images/sahana_logo.png')}}"></a></li>
+      <span class="right">
+        <li><a href="#">Settings</a></li>
+        <li><a href="#">Log in</a></li>
+      </span>
+    </ul>
+  </div>
+  <div class="container">
+     <h1 id="title">
+         {{=response.title or request.application}}
      </h1>
-    </div>
     <div id="content">
      <div class="flash">{{=response.flash or ''}}</div>
      {{include}}
     </div>
-   </div>
-   <div id="footer">
+   <div class="right">
     <p>
       <table><tr>
          <td><img src="{{=URL(request.application,'static','images/sahana_logo.png')}}"></td> 
