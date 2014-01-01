@@ -138,17 +138,21 @@ dashboard_update = function(){
         if (data.subaction){
             $("#"+data.subaction+"_pass").show();
             $("#"+data.subaction+"_fail").hide();
+            alertify.log("<p><b>"+data.action+":</b> "+data.detail+"</p>");
         } else {
             $("#"+data.action+"_pass").show();
             $("#"+data.action+"_fail").hide();
+            alertify.log("<p><b>"+data.action+":</b> "+data.detail+"</p>");
         }
     } else {
         if (data.subaction){
             $("#"+data.subaction+"_pass").hide();
             $("#"+data.subaction+"_fail").show();
+            alertify.error("<p><b>"+data.action+":</b> "+data.detail+"</p>");
         } else {
             $("#"+data.action+"_pass").hide();
             $("#"+data.action+"_fail").show();
+            alertify.error("<p><b>"+data.action+":</b> "+data.detail+"</p>");
         }
     }
     $("#detail").append("<p><b>"+data.action+":</b> "+data.detail+"</p>");
