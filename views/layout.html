@@ -10,6 +10,7 @@
   {{response.files.append(URL(request.application,'static','css/alertify.core.css'))}}
   {{response.files.append(URL(request.application,'static','css/alertify.default.css'))}}
   {{response.files.append(URL(request.application,'static','js/alertify.min.js'))}}
+  {{response.files.append(URL(request.application,'static','css/edenstart.css'))}}
   {{include 'web2py_ajax.html'}}
   <style>
 ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}
@@ -29,7 +30,7 @@ div.error { background-color: red; color: white; padding: 3px; }
 
   <div class="navbar">
     <ul>
-      <li><a href="/edenstart"><img src="{{=URL(request.application,'static','images/sahana_logo.png')}}"></a></li>
+      <li><a href="{{request.application}}"><img src="{{=URL(request.application,'static','images/sahana_logo.png')}}"></a></li>
       <span class="right">
         <li><a href="#">Settings</a></li>
         <li><a href="#">Log in</a></li>

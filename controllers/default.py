@@ -101,13 +101,13 @@ def index():
                                _src="/%s/static/images/Waiting.png" % app),
                            IMG(_id="%s_process" % key,
                                _src="/%s/static/images/ajax-loader.gif" % app,
-                               _class="hidden"),
+                               _style="display: none"),
                            IMG(_id="%s_pass" % key,
                                _src="/%s/static/images/Pass.png" % app,
-                               _class="hidden"),
+                               _style="display: none"),
                            IMG(_id="%s_fail" % key,
                                _src="/%s/static/images/Fail.png" % app,
-                               _class="hidden")
+                               _style="display: none")
                           )
                        )
                     )
@@ -138,26 +138,27 @@ dashboard_update = function(){
         if (data.subaction){
             $("#"+data.subaction+"_pass").show();
             $("#"+data.subaction+"_fail").hide();
-            alertify.log("<p><b>"+data.action+":</b> "+data.detail+"</p>");
+            alertify.log("<p><b>"+data.action+":</b> "+data.detail+"</p>", "", 10000);
         } else {
             $("#"+data.action+"_pass").show();
             $("#"+data.action+"_fail").hide();
-            alertify.log("<p><b>"+data.action+":</b> "+data.detail+"</p>");
+            alertify.log("<p><b>"+data.action+":</b> "+data.detail+"</p>", "", 10000);
         }
     } else {
         if (data.subaction){
             $("#"+data.subaction+"_pass").hide();
             $("#"+data.subaction+"_fail").show();
-            alertify.error("<p><b>"+data.action+":</b> "+data.detail+"</p>");
+            alertify.error("<p><b>"+data.action+":</b> "+data.detail+"</p>", "", 0);
         } else {
             $("#"+data.action+"_pass").hide();
             $("#"+data.action+"_fail").show();
-            alertify.error("<p><b>"+data.action+":</b> "+data.detail+"</p>");
+            alertify.error("<p><b>"+data.action+":</b> "+data.detail+"</p>", "", 0);
         }
     }
     $("#detail").append("<p><b>"+data.action+":</b> "+data.detail+"</p>");
     if (data.advanced != "") {
         $("#advanced").append("<p><b>"+data.action+":</b> "+data.advanced+"</p>");
+        alertify.log("<p><b>"+data.action+":</b> "+data.advanced+"</p>", "", 120000);
     }
     if (data.insert_basic){
         insert_basic(data.insert_basic_id, data.insert_basic_html); 
@@ -764,17 +765,14 @@ def python():
                                    IMG(_id="%s_process" % lib,
                                        _src="/%s/static/images/ajax-loader.gif" % app,
                                        _width=24, _height=24,
-                                       _class="hidden",
                                        _style="display: none"),
                                    IMG(_id="%s_pass" % lib,
                                        _src="/%s/static/images/Pass.png" % app,
                                        _width=24, _height=24,
-                                       _class="hidden",
                                        _style="display: none"),
                                    IMG(_id="%s_fail" % lib,
                                        _src="/%s/static/images/Fail.png" % app,
                                        _width=24, _height=24,
-                                       _class="hidden",
                                        _style="display: none")
                                   )
                                )
@@ -790,17 +788,14 @@ def python():
                                    IMG(_id="%s_process" % lib,
                                        _src="/%s/static/images/ajax-loader.gif" % app,
                                        _width=24, _height=24,
-                                       _class="hidden",
                                        _style="display: none"),
                                    IMG(_id="%s_pass" % lib,
                                        _src="/%s/static/images/Pass.png" % app,
                                        _width=24, _height=24,
-                                       _class="hidden",
                                        _style="display: none"),
                                    IMG(_id="%s_fail" % lib,
                                        _src="/%s/static/images/Fail.png" % app,
                                        _width=24, _height=24,
-                                       _class="hidden",
                                        _style="display: none")
                                   )
                                )

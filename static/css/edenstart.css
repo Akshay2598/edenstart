@@ -8,3 +8,21 @@ label, input {
     display: block;
 }
 
+/* Overwrite Default */
+
+/* Akshay Theme */
+
+table.information tr td{
+	padding: 2px;
+}
+
+table.equidistant tr td{
+	width: 50%;
+}
+
+/* jQuery UI */
+
+.ui-dialog-titlebar, .ui-widget-header{
+	border: 1px solid #2980b9;
+	background: #3498db;
+}

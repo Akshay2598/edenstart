@@ -148,7 +148,7 @@ table.information {
 table.information tr td{
 	background-color: #3DBF74;
 	border: 2px solid #1C7F46;
-	padding: 2px;
+	padding: 10px;
 	width: 50%;
 }
 
@@ -252,7 +252,4 @@ Helper Classes
 table.equidistant{
 	width: 100%;
 	text-align: center;
-}
-table.equidistant tr td{
-	width: 50%;
 }
