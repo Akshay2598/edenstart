@@ -51,6 +51,7 @@ if not settings.enabled and (request.function != "disabled"):
 
 import json
 import os
+import time
 
 def error(): return dict()
 def disabled():
@@ -382,6 +383,7 @@ def start():
     reply.next = "setup_type"
     reply.dialog = "#setup-type-form"
     (reply.html, reply.script) = setup_type_dialog(app)
+    write_log(reply)
     return json.dumps(reply)
 
 '''
@@ -413,6 +415,7 @@ def setup_type():
         (reply.html, reply.script) = use_dialog(app, reply)
     else:
         reply.next = "finish"
+    write_log(reply)
     return json.dumps(reply)
 
 def setup_type_dialog(app):
@@ -488,6 +491,7 @@ def appname():
         reply.next = "git"
     else:
         reply.next = "clone"
+    write_log(reply)
     return appname_json(reply)
 
 def appname_dialog(app):
@@ -541,6 +545,7 @@ def git():
         redirect("/%s/default/index" % app)
 
     reply.next = "clone"
+    write_log(reply)
     return git_json(reply)
 
 
@@ -589,6 +594,7 @@ def clone():
         redirect("/%s/default/index" % app)
 
     reply.next = "python"
+    write_log(reply)
     return clone_json(reply)
 
 '''
@@ -627,6 +633,7 @@ def copy():
     session.old_appname = request.get_vars.copy_appname
     session.new_appname = request.get_vars.appname
     reply.next = "python"
+    write_log(reply)
     return copy_json(reply)
 
 def copy_dialog(app):
@@ -680,6 +687,7 @@ def use():
         redirect("/%s/default/index" % app)
 
     reply.next = "python"
+    write_log(reply)
     return use_json(reply)
 
 def use_dialog(app, reply):
@@ -805,8 +813,10 @@ def python():
             reply.insert_basic_id = "install"
             reply.dialog = "#missing-libs-alert"
             (reply.html, reply.script) = pip_dialog(app)
+            write_log(reply)
             return json.dumps(reply)
         else:
+            write_log(reply)
             return pre_db_json(reply)
 
     return python_json(reply)
@@ -948,6 +958,7 @@ def pip():
                 reply.nextsubaction = session.error_lib[0]
             elif session.warning_lib:
                 reply.nextsubaction = session.warning_lib[0]
+        write_log(reply)
         return json.dumps(reply)
     # End of pip_json
 
@@ -955,6 +966,7 @@ def pip():
         return pip_json(reply)
     elif request.get_vars.button == "skip":
         reply.detail = T("Installation of missing libraries skipped", lazy = False),
+        write_log(reply)
         return pre_db_json(reply)
 
 def pip_dialog(app):
@@ -1032,6 +1044,7 @@ def install():
                     session.fatal = T("Failed to install all of the required libraries",
                                     lazy=False)
                 reply.result = False
+            write_log(reply)
             return reply
         # Install a required lib, if one exists
         lib = None
@@ -1077,6 +1090,7 @@ def database():
                       )
         reply.detail = reply.detail + T("type <b>%s</b> selected" % db_type,
                                         lazy = False)
+        write_log(reply)
         return pre_connect_json(reply)
 
     def pre_connect_json(reply):
@@ -1219,6 +1233,7 @@ def db_connect(reply, db_string):
                         "Connection using database string <b>%s</b> failed<br>" % db_string
         reply.dialog = "#db-type-form"
         reply.next = "database"
+    write_log(reply)
     return reply
 
 def base():
@@ -1326,6 +1341,7 @@ def template():
                          lazy = False)
         session.template = selected_template
         (reply.html, reply.script) = module_dialog(app)
+        write_log(reply)
         return json.dumps(reply)
     return template_json(reply)
 
@@ -1560,3 +1576,21 @@ def module():
         reply.next = "finished"
         return json.dumps(reply)
     return module_json(reply)
+
+def write_log(reply):
+    try:
+        location = "applications/%s/details.log" % app
+        if open(location, 'r'):
+            f = open(location, 'a')
+        else:
+            f = open(location, 'w')
+        if reply.detail:
+            f.write(time.strftime("%d/%m/%Y - %H:%M:%S")+"   "+reply.detail+"\n")
+        if reply.advanced:
+            f.write(time.strftime("%d/%m/%Y - %H:%M:%S")+"   "+reply.advanced+"\n")
+        f.close()
+        return True
+    except Exception, e:
+        print e
+        return False
+    return False
